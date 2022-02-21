@@ -1,0 +1,19 @@
+title: Text Detection Endpoint           
+command: python3 detect.py         
+description: Detect - Library file to launch as endpoint and run inferences.
+version: 1.0.0
+docker_images: tensorflow/tensorflow:latest-gpu  
+compute: medium        
+icon: python              
+arguments:
+  source:
+    value: ''
+    type: 'categorical'
+  weights:
+    value: 'textdetect.pt'
+    type: 'categorical'
+  conf:
+    value: ''
+    type: 'categorical'
+
+    
