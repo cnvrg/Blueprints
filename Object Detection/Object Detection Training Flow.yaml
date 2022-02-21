@@ -1,8 +1,8 @@
 ---
 title: Object Detection Training 
 version: 1.0.0 
-description: Training the yolo algorithm for custom dataset and deploying it. 
-long_description: Training the yolo algorithm to for custom object detection and deploying the final model as an endpoint. 
+description: Train a model to detect objects in images and videos
+long_description: Train and deploy a model that detects objects in images and videos based on your data
 
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"
@@ -75,7 +75,7 @@ tasks:
         values:
         - "/data/object/names.csv"
 
-  - title: Deploy Endpoint
+  - title: Deploy Object Detection
     top: 400
     left: 300
 
@@ -112,4 +112,4 @@ relations:
     - from: Object Detection Recreate
       to: Object Detection Retrain
     - from: Object Detection Retrain
-      to: Deploy Endpoint
+      to: Deploy Object Detection
