@@ -1,0 +1,9 @@
+train: brands/images/train/ 
+val:  brands/images/val/
+test: brands/images/test/
+
+# number of classes
+nc: 3
+
+# class names
+names: ["Apple","IBM", "Xiaomi"]

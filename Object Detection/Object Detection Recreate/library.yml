@@ -1,0 +1,16 @@
+---                 
+title: Object Detection Recreate           
+command: python3 recreate.py         
+description: Recreate - Library file to split the images and labels into train split and create relevant directories
+version: 1.0.1
+docker_images: tensorflow/tensorflow:latest-gpu  
+compute: medium        
+icon: python              
+arguments:
+  images:
+    value: ''
+    type: 'categorical'
+  labels:
+    value: ''
+    type: 'categorical'
+    

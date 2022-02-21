@@ -1,0 +1,39 @@
+---
+title: Object Detection       
+version: 1.0.5
+description: Detect - Library file to load the pretrained weights of yolo and run detections
+icon: python
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - training
+
+command: python3 detect.py              
+
+requirements:
+  cpu: 3.5
+  memory: 7.5
+  gpu: 0
+  hpu: 0
+
+image: python:3.8.6
+
+language: python3
+            
+arguments:
+  source:
+    type: 'categorical'
+    values: ''
+  weights:
+    type: 'categorical'
+    values:
+      - 'yolov5s.pt'
+  conf:
+    type: 'categorical'
+    values: ''
+    
+    
+
+    

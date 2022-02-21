@@ -1,0 +1,47 @@
+---
+title: Object Detection Endpoint
+version: 1.0.0 
+description: Training the yolo algorithm for custom dataset and deploying it. 
+long_description: Training the yolo algorithm to for custom object detection and deploying the final model as an endpoint. 
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - inference
+
+tasks:
+  - title: Object Detection
+    top: 400
+    left: 300
+
+ 
+    type: deploy
+
+
+    library: object-detection-endpoint
+    library_version: 1.0.0
+
+    command: python3 detect.py
+
+    requirements:
+      cpu: 2
+      memory: 8
+      gpu: 1
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    accept_files: true
+
+    file_name: detect.py 
+    function_name: run_detections
+    prep_file: '' 
+    prep_function: '' 
+    input_schema:
+        img: file
+    output_schema:
+        output: text
+      
+relations: []

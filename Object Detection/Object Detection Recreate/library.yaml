@@ -1,0 +1,32 @@
+---
+title: Object Detection Recreate           
+version: 1.0.1
+description: "split images and labels into train split and create relevant directories"
+icon: python
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - training
+
+command: python3 recreate.py             
+
+requirements:
+  cpu: 3.5
+  memory: 7.5
+  gpu: 0
+  hpu: 0
+
+image: python:3.8.6
+
+language: python3
+            
+arguments:
+  - key: images
+    type: 'categorical'
+    values: []
+  - key: labels
+    type: 'categorical'
+    values: []
+

@@ -1,0 +1,18 @@
+title: Object Detection Retrain           
+command: python3 train.py         
+description: Retrain - Library file to retrain yolo on custom objects
+version: 1.0.3
+docker_images: tensorflow/tensorflow:latest-gpu  
+compute: gpu-small           
+icon: python               #xgboost
+arguments:
+  batch:
+    value: ''
+    type: 'categorical'
+  epochs:
+    value: ''
+    type: 'categorical'
+  class_name:
+    value: ''
+    type: 'categorical'
+    

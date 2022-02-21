@@ -1,0 +1,19 @@
+title: Object Detection           
+command: python3 detect.py         
+description: Detect - Library file to load the pretrained weights of yolo and run detections
+version: 1.0.8
+docker_images: tensorflow/tensorflow:latest-gpu  
+compute: medium        
+icon: python              
+arguments:
+  source:
+    value: ''
+    type: 'categorical'
+  weights:
+    value: 'yolov5s.pt'
+    type: 'categorical'
+  conf:
+    value: ''
+    type: 'categorical'
+
+    

@@ -1,0 +1,22 @@
+title: ALS
+command: python3 Retrain/train.py
+description: " -  whatever is supposed to be shown to user - representive text for the user"
+version: 1.0.0
+docker_images: cnvrg
+compute: medium
+data_type: ipynb
+icon: python
+
+arguments:
+  batch:
+    value: ''
+    type: 'categorical'
+  epochs:
+    value: ''
+    type: 'categorical'
+  class_names:
+    value: ''
+    type: 'categorical'
+
+    
+  
