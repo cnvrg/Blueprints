@@ -1,8 +1,8 @@
 ---
 title: Object Detection Endpoint
-version: 1.0.0 
-description: Training the yolo algorithm for custom dataset and deploying it. 
-long_description: Training the yolo algorithm to for custom object detection and deploying the final model as an endpoint. 
+version: 1.0.0
+description: Detect objects elements in images
+long_description: This blueprint allows you to deploy a ready to use API endpoint that can detect obejct elements in images
 
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"

@@ -1,8 +1,8 @@
----
+---i
 title: Text Detection Endpoint
 version: 1.0.0 
-description: Deploy the inference endpoint 
-long_description: Deploy the final endpoint for carrying out inference on input images. 
+description: Detect text elements in images
+long_description: This blueprint allows you to deploy a ready to use endpoint that can detect text elements in images
 
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"
@@ -11,7 +11,7 @@ tags:
   - inference
 
 tasks:
-  - title: Deploy Endpoint
+  - title: Deploy Text Detection
     top: 400
     left: 300
 

@@ -1,8 +1,8 @@
 ---
 title: Logo Detection Training 
-version: 1.0.0 
-description: Training the yolo algorithm for custom dataset and deploying it. 
-long_description: Training the yolo algorithm to for custom Logo detection and deploying the final model as an endpoint. 
+version: 1.0.0
+description: Train a model to detect logo elements in images and videos
+long_description: Train and deploy a model that detects logo elements in images and videos based on your data
 
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"
@@ -76,7 +76,7 @@ tasks:
         values:
         - "/data/object/names.csv"
 
-  - title: Deploy Endpoint
+  - title: Deploy Logo Detection
     top: 400
     left: 300
 
@@ -113,4 +113,4 @@ relations:
     - from: Logo Detection Recreate
       to: Logo Detection Retrain
     - from: Logo Detection Retrain
-      to: Deploy Endpoint
+      to: Deploy Logo Detection
