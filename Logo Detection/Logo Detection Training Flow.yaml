@@ -1,0 +1,116 @@
+---
+title: Logo Detection Training 
+version: 1.0.0 
+description: Training the yolo algorithm for custom dataset and deploying it. 
+long_description: Training the yolo algorithm to for custom Logo detection and deploying the final model as an endpoint. 
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+
+tags:
+  - training
+  - inference
+
+
+tasks:
+  - title: Logo Detection Recreate
+    top: 300
+    left: 0
+
+    type: exec
+
+    library: logo-detection-recreate
+    library_version: 1.0.0
+
+    command: python3 recreate.py
+
+    requirements:
+      cpu: 3.5
+      memory: 7.5
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    params:
+      images:
+        type: 'categorical'
+        values:
+      labels:
+        type: 'categorical'
+        values:
+        
+  - title: Logo Detection Retrain
+    top: 400
+    left: 100
+
+    type: exec
+
+    library: logo-detection-retrain
+    library_version: 1.0.0
+
+    command: python3 train.py
+
+    requirements:
+      cpu: 2
+      memory: 8
+      gpu: 1
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    params:
+      batch:
+        type: 'categorical'
+        values:
+        - '2'
+      epochs:
+        type: 'categorical'
+        values:
+        - '100'
+      class_names:
+        type: 'categorical'
+        values:
+        - "/data/object/names.csv"
+
+  - title: Deploy Endpoint
+    top: 400
+    left: 300
+
+ 
+    type: deploy
+
+
+    library: logo-detection-endpoint
+    library_version: 1.0.0
+
+    command: python3 detect.py
+
+    requirements:
+      cpu: 2
+      memory: 8
+      gpu: 1
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    accept_files: true
+
+    file_name: detect.py 
+    function_name: run_detections
+    prep_file: '' 
+    prep_function: '' 
+    input_schema:
+        img: file
+    output_schema:
+        prediction: text
+      
+relations: 
+    - from: Logo Detection Recreate
+      to: Logo Detection Retrain
+    - from: Logo Detection Retrain
+      to: Deploy Endpoint

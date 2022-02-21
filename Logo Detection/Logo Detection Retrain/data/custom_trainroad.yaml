@@ -1,0 +1,10 @@
+train: ../input/recreatefile/images/train/ 
+val:  ../input/recreatefile/images/val/
+test: ../input/recreatefile/images/test/
+
+
+# number of classes
+nc: 4
+
+# class names
+names: ["Sign1","Sign2", "Sign3","Sign4"]

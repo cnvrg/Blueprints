@@ -1,0 +1,36 @@
+---
+title: Logo Detection Endpoint
+version: 1.0.0
+description: "launch as endpoint and run inferences."
+icon: python
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - inference
+
+kind: webservice
+
+command: python3 detect.py
+
+requirements:
+  cpu: 3.5
+  memory: 7.5
+  gpu: 0
+  hpu: 0
+
+image: python:3.8.6
+
+language: python3
+
+arguments:
+  accept_files: true
+  file_name: detect.py
+  function_name: run_detections # the entrypoint function
+  prep_file: ''
+  prep_function: ''
+  input_schema:
+    img: file
+  output_schema:
+    output: text
