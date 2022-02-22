@@ -1,0 +1,62 @@
+---
+title: Recommenders ALS # required on creation, a slug will be generated from the title? -> inference-library
+version: 1.0.0 # required
+description: "sample description" # optional
+icon: python # optional
+
+# Optional properties for crediting authors
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - training
+
+# Available only for training (exec tasks) libraries only
+command: python3 ALS.py
+
+# These will replace the "compute" argument, values must be >= 0:
+# We need to add requirement for distributed pods
+requirements:
+  cpu: 3.5
+  memory: 8
+  gpu: 0
+  hpu: 0
+
+# This will replace the "docker_images" argument (?) need to work in cnvrg as well
+image: python:3.8
+
+# This will replace "env_setup", currently only python 3 is supported.
+language: python3
+
+arguments:
+  # Training arguments will have type and value, valid types are [discrete, float, integer, categorical]
+  # Empty value will mark the argument as 'required', adding a default value will place it in the flow.
+  - key: train_file
+    type: 'categorical'
+    values:
+    - '/input/train_test_split/train_whole.csv'
+  - key: test_file
+    type: 'categorical'
+    values:
+      - '/input/train_test_split/test_whole.csv'
+  - key: num_of_steps_1
+    type: 'discrete'
+    values:
+      - '1000'
+  - key: embed_dim_1
+    type: 'discrete'
+    values:
+      - '30'
+  - key: reg_coef
+    type: 'discrete'
+    values:
+      - '0.5'
+  - key: threshold
+    type: 'discrete'
+    values:
+      - '0.8'
+  - key: precision_at_value
+    type: 'discrete'
+    values:
+      - '10'

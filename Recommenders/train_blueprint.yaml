@@ -1,0 +1,573 @@
+---
+title: Recommenders Train # Required on creation, replaces the "flow" parameter
+version: 1.0.0 # Required
+description: "sample description" # Optional for showing summary on UI
+long_description: "The recommender system is efficient for some industries such as retail and entertainment. It can enhance the user experience by taking their past experience on other, related platforms."
+# Optional properties for crediting authors
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - training
+
+# List of tasks (libraries)
+tasks:
+  - title: S3 Connector
+    top: 300
+    left: 0
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: s3-connector
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python s3_connector.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: url
+        type: 'categorical'
+        values:
+        - 'https://libhub-readme.s3.us-west-2.amazonaws.com/user_items_data.csv'
+  - title: Data Validation
+    top: 400
+    left: 100
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-data-validation
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 data_validation.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: filename
+        type: 'categorical'
+        values:
+        - '/input/s3_connector/user_items_data.csv'
+  - title: Train Test Split
+    top: 400
+    left: 300
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-train-test-split
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 TTS.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: filename
+        type: 'categorical'
+        values:
+          - '/input/data_validation/ratingstranslated.csv'
+  - title: SVD
+    top: 100
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-svd
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 SVD.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/train_whole.csv'
+      - key: test_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/test_whole.csv'
+      - key: num_of_steps_1
+        type: 'discrete'
+        values:
+          - '20'
+      - key: embed_dim_1
+        type: 'discrete'
+        values:
+          - '100'
+      - key: reg_coef
+        type: 'discrete'
+        values:
+          - '0.02'
+      - key: learning_rate
+        type: 'discrete'
+        values:
+          - '0.005'
+      - key: std_dev_1
+        type: 'discrete'
+        values:
+          - '0.1'
+      - key: threshold
+        type: 'discrete'
+        values:
+          - '0.8'
+      - key: precision_at_value
+        type: 'discrete'
+        values:
+          - '10'
+  - title: SVDPP
+    top: 200
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-svdpp
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 SVDpp.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/train_whole.csv'
+      - key: test_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/test_whole.csv'
+      - key: num_of_steps_1
+        type: 'discrete'
+        values:
+          - '20'
+      - key: embed_dim_1
+        type: 'discrete'
+        values:
+          - '20'
+      - key: reg_coef
+        type: 'discrete'
+        values:
+          - '0.02'
+      - key: learning_rate
+        type: 'discrete'
+        values:
+          - '0.007'
+      - key: std_dev_1
+        type: 'discrete'
+        values:
+          - '0.1'
+      - key: threshold
+        type: 'discrete'
+        values:
+          - '0.8'
+      - key: precision_at_value
+        type: 'discrete'
+        values:
+          - '10'
+  - title: Matrix Factorization
+    top: 300
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-mf
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 Matrix_Factorization.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/train_whole.csv'
+      - key: test_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/test_whole.csv'
+      - key: std_dev_1
+        type: 'discrete'
+        values:
+          - '0.5'
+      - key: embed_dim_1
+        type: 'discrete'
+        values:
+          - '30'
+      - key: num_of_steps_1
+        type: 'discrete'
+        values:
+          - '1000'
+      - key: learning_rate
+        type: 'discrete'
+        values:
+          - '10'
+      - key: threshold
+        type: 'discrete'
+        values:
+          - '0.8'
+      - key: rec_method
+        type: 'categorical'
+        values:
+          - 'DOT'
+      - key: precision_at_value
+        type: 'discrete'
+        values:
+          - '10'
+  - title: Regularized Matrix
+    top: 400
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-rm
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 Regularized.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/train_whole.csv'
+      - key: test_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/test_whole.csv'
+      - key: std_dev_1
+        type: 'discrete'
+        values:
+          - '0.05'
+      - key: embed_dim_1
+        type: 'discrete'
+        values:
+          - '35'
+      - key: num_of_steps_1
+        type: 'discrete'
+        values:
+          - '2000'
+      - key: learning_rate
+        type: 'discrete'
+        values:
+          - '20'
+      - key: reg_coef
+        type: 'discrete'
+        values:
+          - '0.1'
+      - key: gravity_coef_1
+        type: 'discrete'
+        values:
+          - '1'
+      - key: threshold
+        type: 'discrete'
+        values:
+          - '0.8'
+      - key: rec_method
+        type: 'categorical'
+        values:
+          - 'DOT'
+      - key: precision_at_value
+        type: 'discrete'
+        values:
+          - '10'
+  - title: NMF
+    top: 500
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-nmf
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 NMF.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/train_whole.csv'
+      - key: test_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/test_whole.csv'
+      - key: num_of_steps_1
+        type: 'discrete'
+        values:
+          - '50'
+      - key: embed_dim_1
+        type: 'discrete'
+        values:
+          - '15'
+      - key: reg_pu
+        type: 'discrete'
+        values:
+          - '0.06'
+      - key: reg_pi
+        type: 'discrete'
+        values:
+          - '0.06'
+      - key: threshold
+        type: 'discrete'
+        values:
+          - '0.8'
+      - key: precision_at_value
+        type: 'discrete'
+        values:
+          - '10'
+  - title: ALS
+    top: 600
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-als
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 ALS.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/train_whole.csv'
+      - key: test_file
+        type: 'categorical'
+        values:
+          - '/input/train_test_split/test_whole.csv'
+      - key: num_of_steps_1
+        type: 'discrete'
+        values:
+          - '1000'
+      - key: embed_dim_1
+        type: 'discrete'
+        values:
+          - '30'
+      - key: reg_coef
+        type: 'discrete'
+        values:
+          - '0.5'
+      - key: threshold
+        type: 'discrete'
+        values:
+          - '0.8'
+      - key: precision_at_value
+        type: 'discrete'
+        values:
+          - '10'
+  - title: Compare
+    top: 400
+    left: 700
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: recommenders-compare
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 compare.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+    conditions:
+    - target: 0.0
+      task:
+      objective: max
+      tag_key: compositemetric
+      value: ''
+    params:
+      - key: last_item
+        type: 'categorical'
+        values:
+          - 'ALS'
+  - title: Inference
+    top: 400
+    left: 900
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: deploy
+
+    # The library data
+    library: recommenders-inference
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have inference library)
+    kind: webservice
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+    accept_files: false
+
+    file_name: predict.py # the entrypoint file name
+    function_name: predict # the entrypoint function
+    prep_file: '' # preprocess file name
+    prep_function: '' # preprocess function
+    input_schema:
+      user_id: number
+    output_schema:
+      recommendations: list
+
+
+relations:
+  - from: S3 Connector
+    to: Data Validation
+  - from: Data Validation
+    to: Train Test Split
+  - from: Train Test Split
+    to: SVD
+  - from: Train Test Split
+    to: SVDPP
+  - from: Train Test Split
+    to: Matrix Factorization
+  - from: Train Test Split
+    to: Regularized Matrix
+  - from: Train Test Split
+    to: NMF
+  - from: Train Test Split
+    to: ALS
+  - from: SVD
+    to: Compare
+  - from: SVDPP
+    to: Compare
+  - from: Matrix Factorization
+    to: Compare
+  - from: Regularized Matrix
+    to: Compare
+  - from: NMF
+    to: Compare
+  - from: ALS
+    to: Compare
+  - from: Compare
+    to: Inference
+  - from: Data Validation
+    to: Inference

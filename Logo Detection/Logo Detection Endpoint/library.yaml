@@ -1,5 +1,5 @@
 ---
-title: Logo Detection Endpoint
+title: Logo Detection Inference
 version: 1.0.0
 description: "launch as endpoint and run inferences."
 icon: python
@@ -12,7 +12,7 @@ tags:
 
 kind: webservice
 
-command: python3 detect.py
+command: python3 predict.py
 
 requirements:
   cpu: 3.5
@@ -25,12 +25,11 @@ image: python:3.8.6
 language: python3
 
 arguments:
-  accept_files: true
-  file_name: detect.py
-  function_name: run_detections # the entrypoint function
+  accept_files: false
+  file_name: predict.py
+  function_name: predict # the entrypoint function
   prep_file: ''
   prep_function: ''
   input_schema:
     img: file
-  output_schema:
-    output: text
+  output_schema: {}

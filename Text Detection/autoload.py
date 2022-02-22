@@ -5,14 +5,15 @@ import requests
 
 # CHANGE THESE VARIABLES TO AUTO GENERATE BLUEPRINT
 base_url = "https://metacloud.staging-cloud.cnvrg.io/marketplace/api/v1"
-api_token = "ODlUVjBCMWZ1UUxqOVlROU84a2tnUT09OnhPYWdyL05HL1ArWEZoZmRsdU95VlE9PQ=="
-default_version = "1.0.0"
-library_files = ['Text Detection Endpoint']
-blueprint_file = "Text Detection Endpoint.yaml"
-# library_files = ['Object Detection Endpoint',
-#                  'Object Detection Retrain',
-#                  'Object Detection Recreate']
-# blueprint_file = "Object Detection Training Flow.yaml"
+api_token = "dFBXSzlRd1pVenFFZlFTTWZkSEhTQT09OlF2OFc3Ri9wSFZJYlU3OHQ3VmhTd0E9PQ=="
+default_version = "1.0.24"
+# library_files = ['Text Detection Endpoint']
+# blueprint_file = "Text Detection Endpoint.yaml"
+library_files = ['s3_connector',
+                 'Text Detection Endpoint',
+                 'Text Detection Retrain',
+                 'Text Detection Recreate']
+blueprint_file = "Text Detection Training Flow.yaml"
 # library_files = ['Object Detection Endpoint']
 # blueprint_file = "Object Detection Endpoint.yaml"
 
@@ -195,7 +196,8 @@ with open(blueprint_file, 'r') as f:
     schema_yaml = f.read()
     schema_json = yaml.safe_load(schema_yaml)
 
-blueprint_name = schema_json["title"].replace(" ", "-").lower()
+blueprint_name = schema_json["title"]
+blueprint_slug = blueprint_name.replace(" ", "-").lower()
 create_blueprint(blueprint_name)
-create_blueprint_version(blueprint_name)
-build_blueprint(blueprint_name)
+create_blueprint_version(blueprint_slug)
+build_blueprint(blueprint_slug)

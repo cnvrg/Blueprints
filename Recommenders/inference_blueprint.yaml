@@ -1,0 +1,52 @@
+---
+title: Recommender Engine Inference # Required on creation, replaces the "flow" parameter
+version: 1.0.0 # Required
+description: "Recommender system tryout"
+
+# Optional properties for crediting authors
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - inference
+
+# List of tasks (libraries)
+tasks:
+  - title: Recommenders Inference library
+    top: 400
+    left: 500
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: deploy
+
+    # The library data
+    library: example-recommender-inference
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have inference library)
+    kind: webservice
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+    accept_files: false
+
+    file_name: predict.py # the entrypoint file name
+    function_name: predict # the entrypoint function
+    prep_file: '' # preprocess file name
+    prep_function: '' # preprocess function
+    input_example:
+      user_id: 2
+    input_schema:
+      user_id: number
+    output_schema:
+      recommendations: list
+
+
+relations: []
