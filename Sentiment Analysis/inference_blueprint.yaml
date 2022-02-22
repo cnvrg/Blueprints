@@ -1,8 +1,9 @@
 ---
 title: Sentiment Analysis Inference # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "Sentiment Analysis"
-long_description: "Applying sentiment analysis in your business can help you understand what people think about your brand, product or service so you can act accordingly."
+description: Analyze sentiment analysis in text
+long_description: This blueprint allows you to deploy a ready to use endpoint that can analyse sentiment in text
+
 # Optional properties for crediting authors
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"
