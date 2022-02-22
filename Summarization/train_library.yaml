@@ -4,7 +4,7 @@ description: "Generating the summary of articles given by the user after trainin
 long_description: "Text Summarization is the ."
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 tags:
   - inference

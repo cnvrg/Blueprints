@@ -5,7 +5,7 @@ description: Train a model to detect logo elements in images and videos
 long_description: Train and deploy a model that detects logo elements in images and videos based on your data
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 
 tags:

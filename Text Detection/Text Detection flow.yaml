@@ -5,7 +5,7 @@ description: Batch predict using the pretrained model.
 long_description: Uploading custom weights or using default weights for batch detection. 
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 
 tags:

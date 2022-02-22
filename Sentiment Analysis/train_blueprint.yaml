@@ -5,7 +5,7 @@ description: "sample description" # Optional for showing summary on UI
 long_description: "Applying sentiment analysis in your business can help you understand what people think about your brand, product or service so you can act accordingly."
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:

@@ -1,8 +1,10 @@
 title: Summarization Inference
 version: 1.0.0
-description: "Summerize and extract text"
+description: Summarize english article to short sentences
+long_description: This blueprint allows you to deploy a ready to use endpoint that can summarize english articles
+
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 tags:
   - inference
 
@@ -30,7 +32,7 @@ tasks:
     prep_file: '' # preprocess file name
     prep_function: '' # preprocess function
     input_example:
-      text: txt
+      text: "You, me, or nobody is gonna hit as hard as life. But it ain't about how hard you hit. It's about how hard you can get hit and keep moving forward; how much you can take and keep moving forward. That's how winning is done!"
     input_schema:
       text: text
     output_schema:

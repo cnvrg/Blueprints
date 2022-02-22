@@ -7,7 +7,7 @@ icon: python # optional
 
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:

@@ -1,11 +1,11 @@
 ---
 title: Object Detection Training 
 version: 1.0.0 
-description: Train a model to detect objects in images and videos
-long_description: Train and deploy a model that detects objects in images and videos based on your data
+description: Train and deploy a model that detects objects in images
+long_description: Train and deploy a model that detects objects in images and videos based on your custom data
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 
 tags:

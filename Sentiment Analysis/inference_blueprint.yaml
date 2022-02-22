@@ -6,7 +6,7 @@ long_description: This blueprint allows you to deploy a ready to use endpoint th
 
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:

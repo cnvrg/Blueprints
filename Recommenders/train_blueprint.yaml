@@ -5,7 +5,7 @@ description: "sample description" # Optional for showing summary on UI
 long_description: "The recommender system is efficient for some industries such as retail and entertainment. It can enhance the user experience by taking their past experience on other, related platforms."
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:

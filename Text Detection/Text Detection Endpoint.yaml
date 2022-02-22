@@ -5,7 +5,7 @@ description: Detect text elements in images
 long_description: This blueprint allows you to deploy a ready to use endpoint that can detect text elements in images
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 tags:
   - inference
