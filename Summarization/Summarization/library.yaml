@@ -1,0 +1,40 @@
+title: Text Summarization Inference
+version: 1.0.0
+description: "Generating the summary of articles given by the user"
+icon: python
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - inference
+
+command: python3 generate_summary.py
+
+requirements:
+  cpu: 3.5
+  memory: 7.5
+  gpu: 0
+  hpu: 0
+
+image: python:3.8.6
+
+language: python3
+            
+arguments:
+  output_file_name:
+    type: 'categorical'
+    values:
+      - 'summary_generated_1.csv'
+  input_path:
+    type: 'categorical'
+    values:
+      - '/input/wikipedia_connector/cnvrg/wiki_output_2.csv'
+  default_model:
+    type: 'categorical'
+    values:
+      - '/cnvrg/Model/bart_large_cnn_original_1/'
+  min_percent:
+    type: 'categorical'
+    values::
+      - ''

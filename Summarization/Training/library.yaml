@@ -1,0 +1,56 @@
+title: Text Summarization Train
+version: 1.0.0
+description: " - training the default model on user's data"
+icon: python
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - training
+
+command: python3 training_model_summary.py
+
+requirements:
+  cpu: 3.5
+  memory: 7.5
+  gpu: 0
+  hpu: 0
+
+image: python:3.8.6
+
+language: python3
+            
+arguments:
+  Trained_Model_Name:
+    type: 'categorical'
+    values:
+      - 'My_Custom_Model'
+  training_file:
+    type: 'categorical'
+    values:
+      - 'training_data/wiki_lingua_file.csv'
+  default_model:
+    type: 'categorical'
+    values:
+      - './Model/Model/'
+  train_rows:
+    type: 'discrete'
+    values:
+      - '100'
+  encoder_max_length:
+    type: 'discrete'
+    values:
+      - ''
+  decoder_max_length:
+    type: 'discrete'
+    values:
+      - ''
+  label_smooth_factor:
+    type: 'discrete'
+    values:
+      - ''
+  weight_decay_factor:
+    type: 'discrete'
+    values:
+      - ''
