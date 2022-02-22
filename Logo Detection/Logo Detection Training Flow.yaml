@@ -46,13 +46,13 @@ tasks:
           - 'https://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
-        values: []
+        values: 'libhub-readme'
       - key: localdir
         type: 'categorical'
-        values: []
+        values: '/cnvrg'
       - key: prefix
         type: 'categorical'
-        values: []
+        values: 'logo_detection_data/'
   - title: Recreate
     top: 300
     left: 200
@@ -76,10 +76,10 @@ tasks:
     params:
       - key: images
         type: 'categorical'
-        values: []
+        values: '/input/s3_connector/logo_detection_data/images'
       - key: labels
         type: 'categorical'
-        values: []
+        values: '/input/s3_connector/logo_detection_data/labels'
         
   - title: Retrain
     top: 400

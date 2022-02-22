@@ -14,11 +14,20 @@ parser.add_argument('--project_dir', action='store', dest='project_dir', help=""
 
 parser.add_argument('--output_dir', action='store', dest='output_dir', help="""--- For inner use of cnvrg.io ---""")
 
+parser.add_argument('--kaggle_username', action='store', dest='kaggle_username',required=False,  help="""--- For inner use of cnvrg.io ---""")
+
+parser.add_argument('--kaggle_key', action='store', dest='kaggle_key', required=False, help="""--- For inner use of cnvrg.io ---""")
+
 args = parser.parse_args()
 dataset_name = args.kaggle_dataset_name
 dataset_path = args.target_path
 file_name = args.file_name
 cnvrg_dataset = args.cnvrg_dataset
+
+kaggle_username = args.kaggle_username
+kaggle_key =  args.kaggle_key
+os.environ["KAGGLE_KEY"]=kaggle_key
+os.environ["KAGGLE_USERNAME"]=kaggle_username
 
 download_command = f'kaggle datasets download {dataset_name} --unzip'
 

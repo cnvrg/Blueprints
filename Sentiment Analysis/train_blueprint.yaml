@@ -56,6 +56,12 @@ tasks:
         type: categorical
         values:
           - 'None'
+      - key: kaggle_username
+        type: categorical
+        values: [ ]
+      - key: kaggle_key
+        type: categorical
+        values: [ ]
   - title: Train
     top: 300
     left: 400
@@ -85,7 +91,7 @@ tasks:
       - key: input_filename
         type: 'categorical'
         values:
-          - 'input/kaggle_connector/sentiment140_data.csv'
+          - '/input/kaggle_connector/sentiment140_data.csv'
       - key: output_token_file
         type: 'categorical'
         values:
