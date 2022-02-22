@@ -25,7 +25,7 @@ tasks:
     library_version: 1.0.0
 
     # The flattened library parameters (in this case we have training library)
-    command: python s3_connector.py
+    command: python s3-connector.py
 
     requirements:
       cpu: 3.5
@@ -33,16 +33,25 @@ tasks:
       gpu: 0
       hpu: 0
 
-    image: python:3.8.6
+    image: cnvrg:v5.0
     language: python3
 
     # The "arguments" property changes to "params", rest remains the same.
     # Params in the blueprint yaml can be used to override the arguments in the library.
     params:
-      - key: url
+      - key: endpoint
         type: 'categorical'
         values:
-        - 'https://libhub-readme.s3.us-west-2.amazonaws.com/user_items_data.csv'
+          - 'https://s3.amazonaws.com download'
+      - key: bucketname
+        type: 'categorical'
+        values: [ ]
+      - key: localdir
+        type: 'categorical'
+        values: [ ]
+      - key: prefix
+        type: 'categorical'
+        values: [ ]
   - title: Data Validation
     top: 400
     left: 100
