@@ -1,5 +1,5 @@
 ---
-title: Logo Detection Endpoint
+title: Logo Detection Inference
 version: 1.0.0
 description: Detect logo elements in images
 long_description: This blueprint allows you to deploy a ready to use endpoint that can detect logo elements in images
@@ -19,29 +19,28 @@ tasks:
     type: deploy
 
 
-    library: logo-detection-endpoint
+    library: logo-detection-inference
     library_version: 1.0.0
 
-    command: python3 detect.py
+    command: python3 predict.py
 
     requirements:
-      cpu: 2
+      cpu: 3.5
       memory: 8
-      gpu: 1
+      gpu: 0
       hpu: 0
 
     image: python:3.8.6
     language: python3
 
-    accept_files: true
+    accept_files: false
 
-    file_name: detect.py 
-    function_name: run_detections
+    file_name: predict.py
+    function_name: predict
     prep_file: '' 
     prep_function: '' 
     input_schema:
         img: file
-    output_schema:
-        output: text
+    output_schema: {}
         
 relations: []

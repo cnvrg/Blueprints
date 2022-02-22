@@ -1,0 +1,38 @@
+---
+title: Text Detection Retrain
+version: 1.0.3
+description: Retrain - Library file to retrain yolo on custom objects
+icon: python
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - training
+
+command: python3 train.py         
+
+requirements:
+  cpu: 2
+  memory: 8
+  gpu: 1
+  hpu: 0
+
+image: python:3.8.6
+
+language: python3
+            
+arguments:
+  - key: batch
+    type: 'categorical'
+    values:
+      - '2'
+  - key: epochs
+    type: 'categorical'
+    values:
+      - '100'
+  - key: class_names
+    type: 'categorical'
+    values: []
+    
+    

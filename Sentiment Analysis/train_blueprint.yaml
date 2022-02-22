@@ -1,0 +1,116 @@
+---
+title: Sentiment Analysis Train # Required on creation, replaces the "flow" parameter
+version: 1.0.0 # Required
+description: "sample description" # Optional for showing summary on UI
+long_description: "Applying sentiment analysis in your business can help you understand what people think about your brand, product or service so you can act accordingly."
+# Optional properties for crediting authors
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - training
+  - nlp
+
+# List of tasks (libraries)
+tasks:
+  - title: Kaggle Connector
+    top: 300
+    left: 200
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: kaggle-dataset-connector
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 main.py
+
+    requirements:
+      cpu: 2
+      memory: 2
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: kaggle_dataset_name
+        type: categorical
+        values:
+          - 'kazanova/sentiment140'
+      - key: target_path
+        type: categorical
+        values:
+          - '/cnvrg'
+      - key: cnvrg_dataset
+        type: categorical
+        values:
+          - 'None'
+      - key: file_name
+        type: categorical
+        values:
+          - 'None'
+  - title: Train
+    top: 300
+    left: 400
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: sentiment-analysis-train
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 train.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: input_filename
+        type: 'categorical'
+        values:
+          - 'input/kaggle_connector/sentiment140_data.csv'
+      - key: output_token_file
+        type: 'categorical'
+        values:
+          - 'tokenizer.pickle'
+      - key: output_model_file
+        type: 'categorical'
+        values:
+          - 'train_model.h5'
+      - key: text_column
+        type: 'categorical'
+        values:
+          - 'text'
+      - key: label_column
+        type: 'categorical'
+        values:
+          - 'sentiment'
+      - key: epochs_val
+        type: 'discrete'
+        values:
+          - '64'
+      - key: batch_size_val
+        type: 'discrete'
+        values:
+          - '1024'
+
+relations:
+  - from: Kaggle Connector
+    to: Train

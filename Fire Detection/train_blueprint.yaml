@@ -1,0 +1,68 @@
+---
+title: Fire Detection Train # Required on creation, replaces the "flow" parameter
+version: 1.0.0 # Required
+description: "Retrain Fire Detection model on your custom data" # Optional for showing summary on UI
+# Optional properties for crediting authors
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - training
+  - insurance
+
+# List of tasks (libraries)
+tasks:
+  - title: Train
+    top: 300
+    left: 400
+
+    # Type must be according to the flow task conventions (data, exec, deploy)
+    type: exec
+
+    # The library data
+    library: fire-detection-train
+    library_version: 1.0.0
+
+    # The flattened library parameters (in this case we have training library)
+    command: python3 train.py
+
+    requirements:
+      cpu: 3.5
+      memory: 8
+      gpu: 0
+      hpu: 0
+
+    image: tensorflow/tensorflow:latest-gpu
+    language: python3
+
+    # The "arguments" property changes to "params", rest remains the same.
+    # Params in the blueprint yaml can be used to override the arguments in the library.
+    params:
+      - key: train_folder
+        type: 'categorical'
+        values:
+          - '/data/fire-smoke-dataset/Train'
+      - key: test_folder
+        type: 'categorical'
+        values:
+          - '/data/fire-smoke-dataset/Test'
+      - key: epochs
+        type: 'discrete'
+        values:
+          - '20'
+      - key: steps_per_epoch
+        type: 'discrete'
+        values:
+          - '14'
+      - key: train_batch_size
+        type: 'discrete'
+        values:
+          - '128'
+      - key: test_batch_size
+        type: 'discrete'
+        values:
+          - '14'
+
+
+relations: []
