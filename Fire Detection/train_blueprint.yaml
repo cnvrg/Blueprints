@@ -2,7 +2,7 @@
 title: Train Fire Detection  # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
 description: Train a model that can detect fire elements in images
-long_description: Train and deploy a model that detects fire elements in images based on your images
+long_description: Train and deploy a model that detects fire elements in images based on your data
 
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"
@@ -64,7 +64,7 @@ tasks:
         type: 'discrete'
         values:
           - '14'
-  - title: Inference
+  - title: Deploy Fire Detection
     top: 400
     left: 500
 
@@ -102,4 +102,4 @@ tasks:
 
 relations:
   - from: Train
-    to: Inference
+    to: Deploy Fire Detection
