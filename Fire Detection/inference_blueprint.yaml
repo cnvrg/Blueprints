@@ -47,7 +47,9 @@ tasks:
     input_schema:
       img: file
     output_schema:
-      prediction: text
+      label: number
+      name: text
+      score: number
 
 
 relations: []
