@@ -29,5 +29,5 @@ def predict(data):
                       'label': int(pred),
                       'score': float(probabilities[pred])}
         predictions.append(prediction)
-    return {'prediction': predictions}
+    return {'prediction': prediction}
     

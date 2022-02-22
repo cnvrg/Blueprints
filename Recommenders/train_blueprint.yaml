@@ -1,9 +1,9 @@
 ---
 title: Recommenders Train # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "sample description" # Optional for showing summary on UI
-long_description: "The recommender system is efficient for some industries such as retail and entertainment. It can enhance the user experience by taking their past experience on other, related platforms."
-# Optional properties for crediting authors
+description: Train a custome model that can recommand users similar items according to their behaviour
+long_description: This blueprint allows you to train and deploy a custome model that analyze users behaviour and recommand similar items accordingly
+
 author: "cnvrg"
 author_email: "info@cnvrg.io"
 
