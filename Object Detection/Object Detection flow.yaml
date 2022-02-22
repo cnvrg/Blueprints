@@ -5,7 +5,7 @@ description: Training the yolo algorithm for custom dataset and deploying it.
 long_description: Training the yolo algorithm to for custom object detection and deploying the final model as an endpoint. 
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 
 tags:

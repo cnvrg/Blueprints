@@ -24,7 +24,8 @@ In both methods, the hyper-parameters can be customized and the user can choose 
 There are a few constraints on the data:
 * The rating value is supposed to be within 0-10. The maximum rating can be any number below 10 (5 etc).
   * The models will may work for ratings beyond 10 as well, but with a reduced accuracy.
-  * The user can standardize the data however, the predictions accuracy will be reduced.
+  * The user can standardize the data however, the predictions accuracy will be redu
+    ced.
 * The data magnitude has to be within certain limits:
   * The number of users and number of items have to be under 10,000 each for the sake of processing time, unless the user has a significantly larger than average compute.
 

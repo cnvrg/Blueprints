@@ -15,7 +15,7 @@ to retrain models with their own custom data.
 
 You can visit [cnvrg Blueprints](https://metacloud.cloud.cnvrg.io/marketplace) to use one of the pretrained blueprints in our [metacloud](https://metacloud.cloud.cnvrg.io) environment
 
-### Contribute
+## Contribute
 
 Contact us at <community@cnvrg.io> to contribute your own blueprints and be part of the community
 

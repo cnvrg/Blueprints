@@ -5,7 +5,7 @@ description: split the images and labels into train split and create relevant di
 icon: python
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 tags:
   - training

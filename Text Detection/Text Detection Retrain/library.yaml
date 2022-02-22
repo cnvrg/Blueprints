@@ -5,7 +5,7 @@ description: Retrain - Library file to retrain yolo on custom objects
 icon: python
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 tags:
   - training

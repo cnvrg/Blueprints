@@ -1,11 +1,11 @@
 ---
 title: Object Detection Training 
 version: 1.0.0 
-description: Training the yolo algorithm for custom dataset and deploying it. 
-long_description: Training the yolo algorithm to for custom object detection and deploying the final model as an endpoint. 
+description: Train and deploy a model that detects objects in images
+long_description: Train and deploy a model that detects objects in images and videos based on your custom data
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 
 tags:
@@ -46,13 +46,13 @@ tasks:
           - 'https://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
-        values: [ ]
+        values: 'libhub-readme'
       - key: localdir
         type: 'categorical'
-        values: [ ]
+        values: '/cnvrg'
       - key: prefix
         type: 'categorical'
-        values: [ ]
+        values: 'object_detection_data/'
   - title: Recreate
     top: 300
     left: 200
@@ -76,10 +76,10 @@ tasks:
     params:
       - key: images
         type: 'categorical'
-        values: []
+        values: '/input/s3_connector/object_detection_data/images'
       - key: labels
         type: 'categorical'
-        values: []
+        values: '/input/s3_connector/object_detection_data/labels'
         
   - title: Retrain
     top: 400
@@ -115,7 +115,7 @@ tasks:
         values:
         - "/data/object/names.csv"
 
-  - title: Deploy Endpoint
+  - title: Deploy Object Detection
     top: 400
     left: 600
 
@@ -156,4 +156,4 @@ relations:
     - from: Recreate
       to: Retrain
     - from: Retrain
-      to: Deploy Endpoint
+      to: Deploy Object Detection

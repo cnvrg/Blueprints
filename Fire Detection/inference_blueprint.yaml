@@ -1,11 +1,11 @@
 ---
 title: Fire Detection Inference # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "Detect Fire in images"
-long_description: 'With this blueprint you can immediately detect and identify fire in images'
+description: Detect fire elements in images
+long_description: This blueprint allows you to deploy a ready to use endpoint that can detect fire elements in images
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:

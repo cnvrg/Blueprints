@@ -1,10 +1,11 @@
 ---
-title: Fire Detection Train # Required on creation, replaces the "flow" parameter
+title: Train Fire Detection  # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "Retrain Fire Detection model on your custom data" # Optional for showing summary on UI
-# Optional properties for crediting authors
+description: Train a model that can detect fire elements in images
+long_description: Train and deploy a model that detects fire elements in images based on your data
+
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:
@@ -45,13 +46,13 @@ tasks:
           - 'https://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
-        values: [ ]
+        values: 'libhub-readme'
       - key: localdir
         type: 'categorical'
-        values: [ ]
+        values: '/cnvrg'
       - key: prefix
         type: 'categorical'
-        values: [ ]
+        values: 'fire_detection_data/'
   - title: Train
     top: 300
     left: 400
@@ -81,11 +82,11 @@ tasks:
       - key: train_folder
         type: 'categorical'
         values:
-          - '/data/fire-smoke-dataset/Train'
+          - '/input/s3_connector/fire_detection_data/Train'
       - key: test_folder
         type: 'categorical'
         values:
-          - '/data/fire-smoke-dataset/Test'
+          - '/input/s3_connector/fire_detection_data/Test'
       - key: epochs
         type: 'discrete'
         values:
@@ -102,7 +103,7 @@ tasks:
         type: 'discrete'
         values:
           - '14'
-  - title: Inference
+  - title: Deploy Fire Detection
     top: 400
     left: 500
 
@@ -142,4 +143,4 @@ relations:
   - from: S3
     to: Train
   - from: Train
-    to: Inference
+    to: Deploy Fire Detection

@@ -1,17 +1,17 @@
 ---
 title: Logo Detection Inference
-version: 1.0.0 
-description: Deploy the inference endpoint 
-long_description: Deploy the final endpoint for carrying out inference on input images. 
+version: 1.0.0
+description: Detect logo elements in images
+long_description: This blueprint allows you to deploy a ready to use endpoint that can detect logo elements in images
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 tags:
   - inference
 
 tasks:
-  - title: Logo Detection
+  - title: Deploy Logo Detection
     top: 400
     left: 300
 

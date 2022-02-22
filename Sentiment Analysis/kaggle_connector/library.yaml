@@ -6,7 +6,7 @@ icon: python # optional
 
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:
@@ -47,3 +47,9 @@ arguments:
     type: categorical
     values:
       - 'None'
+  - key: kaggle_username
+    type: categorical
+    values: []
+  - key: kaggle_key
+    type: categorical
+    values: []
