@@ -52,7 +52,7 @@ tasks:
         values: '/cnvrg'
       - key: prefix
         type: 'categorical'
-        values: 'logo_detection_data/'
+        values: 'fire_detection_data/'
   - title: Train
     top: 300
     left: 400
@@ -82,11 +82,11 @@ tasks:
       - key: train_folder
         type: 'categorical'
         values:
-          - '/data/fire-smoke-dataset/Train'
+          - '/input/s3_connector/fire_detection_data/Train'
       - key: test_folder
         type: 'categorical'
         values:
-          - '/data/fire-smoke-dataset/Test'
+          - '/input/s3_connector/fire_detection_data/Test'
       - key: epochs
         type: 'discrete'
         values:
