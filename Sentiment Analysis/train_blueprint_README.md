@@ -1,7 +1,7 @@
 You can use this blueprint to train a tailored model that analyzes sentiment in text using your custom data.
 In order to train this model with your data, you would need to provide a data of text sentences and sentiment pairs.
 For your convenience, you can use one of Kaggle prebuilt datasets.
-1. Click on "Use Blueprint" button
+1. Click on `Use Blueprint` button
 2. You will be redirected to your blueprint flow page
 3. 3. In the flow, edit the following tasks to provide your data:
 
@@ -19,7 +19,7 @@ In the `Kaggle Connector` task:
 4. Click on the 'Run Flow' button
 5. In a few minutes you will train a new sentiment analysis model and deploy as a new API endpoint
 6. Go to the 'Serving' tab in the project and look for your endpoint
-7. You can use the "Try it Live" section with any text to analyse the sentiment
+7. You can use the `Try it Live` section with any text to analyse the sentiment
 8. You can also integrate your API with your code using the integration panel at the bottom of the page
 
 Congrats! You have trained and deployed a custom model that can analyse sentiment in text!
