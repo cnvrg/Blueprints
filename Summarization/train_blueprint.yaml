@@ -1,10 +1,10 @@
 title: Text Summarization Training
 version: 1.0.0
-description: "Generating the summary of articles given by the user after training a custom model"
-long_description: "Text Summarization is the ."
+description: Summarize text to short sentences
+long_description: This blueprint allows you to train a custome mode a that can summarize text to short sentences
 
 author: "cnvrg"
-author_email: "libhub@cnvrg.io"
+author_email: "info@cnvrg.io"
 
 tags:
   - training

@@ -1,8 +1,8 @@
 ---
 title: Sentiment Analysis Train # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "sample description" # Optional for showing summary on UI
-long_description: "Applying sentiment analysis in your business can help you understand what people think about your brand, product or service so you can act accordingly."
+description: Analyze sentiment analysis in text
+long_description: This blueprint allows you to train and deploy a custom model that can analyse sentiment in text absed on your data
 # Optional properties for crediting authors
 author: "cnvrg"
 author_email: "info@cnvrg.io"
@@ -116,7 +116,44 @@ tasks:
         type: 'discrete'
         values:
           - '1024'
+  - title: Deploy Sentiment Analysis
+      top: 400
+      left: 500
+
+      # Type must be according to the flow task conventions (data, exec, deploy)
+      type: deploy
+
+      # The library data
+      library: sentiment-analysis-inference
+      library_version: 1.0.0
+
+      # The flattened library parameters (in this case we have inference library)
+      kind: webservice
+
+      requirements:
+        cpu: 3.5
+        memory: 8
+        gpu: 0
+        hpu: 0
+
+      image: python:3.8.6
+      language: python3
+      accept_files: false
+
+      file_name: predict.py # the entrypoint file name
+      function_name: predict # the entrypoint function
+      prep_file: '' # preprocess file name
+      prep_function: '' # preprocess function
+      input_example:
+        text: 'this is awesome'
+      input_schema:
+        text: text
+      output_schema:
+        label: text
+        score: number
 
 relations:
   - from: Kaggle Connector
     to: Train
+  - from: Train
+    to: Deploy Sentiment Analysis
