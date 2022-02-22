@@ -8,8 +8,10 @@ In order to train this model with your data, you would need to provide two folde
 4. Click on the 'Run Flow' button
 5. In a few minutes you will train a new object detection model and deploy as a new API endpoint
 6. Go to the 'Serving' tab in the project and look for your endpoint
-7. You can now use the 'Try it Live' section to get results
-8. You can also integrate your API with your code and your data
+7. You can use the "Try it Live" section with any image to check your model
+8. You can also integrate your API with your code using the integration panel at the bottom of the page
 
+Congrats! You have deployed a functioning API endpoint that detects object elements in images!
 
-[See here how we created this blueprint](https://link-url-here.org)
+[See here how we created this blueprint](https://github.com/cnvrg/Blueprints/tree/main/Object%20Detection)
+

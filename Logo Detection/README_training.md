@@ -12,4 +12,4 @@ In order to train this model with your data, you would need to provide two folde
 8. You can also integrate your API with your code and your data
 
 
-[See here how we created this blueprint](https://link-url-here.org)
+[See here how we created this blueprint](https://github.com/cnvrg/Blueprints/tree/main/Logo%20Detection)

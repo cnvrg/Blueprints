@@ -1,4 +1,4 @@
-You can use this blueprint to train a tailored model that detects fire elements in images using your custom data.
+You can use this blueprint to train a tailored model that detects objects images and videos using your custom data.
 In order to train this model with your data, you would need to provide two folders:
 - images: A folder with all the images you want to train the model
 - labels: A folder with labels that correlates to the objects in the images folder
@@ -12,4 +12,4 @@ In order to train this model with your data, you would need to provide two folde
 8. You can also integrate your API with your code and your data
 
 
-[See here how we created this blueprint](https://github.com/cnvrg/Blueprints/tree/main/Fire%20Detection
+[See here how we created this blueprint](https://github.com/cnvrg/Blueprints/tree/main/Logo%20Detection)

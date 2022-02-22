@@ -1,8 +1,9 @@
 ---
-title: Fire Detection Train # Required on creation, replaces the "flow" parameter
+title: Train Fire Detection  # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "Retrain Fire Detection model on your custom data" # Optional for showing summary on UI
-# Optional properties for crediting authors
+description: Train a model that can detect fire elements in images
+long_description: Train and deploy a model that detects fire elements in images based on your images
+
 author: "cnvrg"
 author_email: "libhub@cnvrg.io"
 

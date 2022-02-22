@@ -1,7 +1,8 @@
 ---
 title: Recommender Engine Inference # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: "Recommender system tryout"
+description: Detect logo elements in images
+long_description: This blueprint allows you to deploy a ready to use endpoint that can detect logo elements in images
 
 # Optional properties for crediting authors
 author: "cnvrg"
