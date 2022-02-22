@@ -45,13 +45,16 @@ tasks:
           - 'https://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
-        values: 'libhub-readme'
+        values:
+          - 'libhub-readme'
       - key: localdir
         type: 'categorical'
-        values: '/cnvrg'
+        values:
+          - '/cnvrg'
       - key: prefix
         type: 'categorical'
-        values: 'recommenders_data/'
+        values:
+          - 'recommenders_data/'
   - title: Data Validation
     top: 400
     left: 100

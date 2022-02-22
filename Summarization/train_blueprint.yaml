@@ -45,7 +45,8 @@ tasks:
           - 'libhub-readme'
       - key: localdir
         type: 'categorical'
-        values: '/cnvrg'
+        values:
+          - '/cnvrg'
       - key: prefix
         type: 'categorical'
         values:
