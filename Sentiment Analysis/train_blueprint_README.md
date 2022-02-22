@@ -22,6 +22,6 @@ In the `Kaggle Connector` task:
 7. You can use the "Try it Live" section with any text to analyse the sentiment
 8. You can also integrate your API with your code using the integration panel at the bottom of the page
 
-Congrats! You have deployed an API endpoint that analyse sentiment in text!
+Congrats! You have trained and deployed a custom model that can analyse sentiment in text!
 
 [See here how we created this blueprint](https://github.com/cnvrg/Blueprints/tree/main/Sentiment%20Analysis)

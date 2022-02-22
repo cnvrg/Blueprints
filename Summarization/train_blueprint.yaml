@@ -49,7 +49,7 @@ tasks:
       - key: prefix
         type: 'categorical'
         values:
-          - 'summerization_data/train_data/'
+          - 'summerization_data/'
   - title: Train
     top: 400
     left: 300
@@ -83,11 +83,11 @@ tasks:
       - key: training_file
         type: 'categorical'
         values:
-          - 'training_data/wiki_lingua_file.csv'
+          - '/input/s3_connector/summerization_data/train_data/wiki_lingua_file.csv'
       - key: default_model
         type: 'categorical'
         values:
-          - './Model/Model/'
+          - 'bart_large_cnn_original/'
       - key: train_rows
         type: 'discrete'
         values:

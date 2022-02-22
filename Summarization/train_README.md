@@ -1,31 +1,26 @@
-# Blueprint : Training (Generating the summary of articles after fine tuning a pretrained model)
-This blueprint has two libraries
-1. **Text Summarization Train**
-2. **Text Summarization Inference**
+You can use this blueprint to train a custom model that can summarize english text to short sentences using Bert model.
+In order to train this model with your data, you would need to provide one folder located in s3:
+- The folder needs to contain a file csv that includes 2 columns: Document, Summary
+1. Click on "Use Blueprint" button
+2. You will be redirected to your blueprint flow page
+3. In the flow, edit the following tasks to provide your data:
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+   In the `S3 Connector` task:
+    * Under the `bucketname` parameter provide the bucket name of the data
+    * Under the `prefix` parameter provide the main path to where the csv file is located
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-## Text Summarization Train
-This library serves as a tool for fine-tuning a pretrained summarization model (for getting abstractive summarizations) on a pre-built dataset or a custom dataset given by the user. The dataset, wiki_lingua is actually referenced from huggingface library and contains upto 3,500 rows of articles and summaries, in English language. It’s up to the user to specify the number of rows on which they want to train their model. 
-## Text Summarization Inference
-This library serves as a tool for getting abstractive summarization of English articles without training the model further. It uses a specific model trained by CNVRG on custom data (wiki_lingua dataset) and gives summaries of around 7% of the total article size. While running this library, the user needs to give the following parameters: -
-## What can you expect?
-- abstractive summaryof any article
+   In the `Train` task:
+    *  Under the `training_file` parameter provide the path to the csv file including the prefix you provided in the `S3 Connector`, it should look like:
+       `/input/s3_connector/<prefix>/<csv file>`
 
+**NOTE**: You can use prebuilt data examples paths that are already provided
 
-## What you need to provide?
-- training file
-- input fie
-- hyper paramters
+4. Click on the 'Run Flow' button
+5. In a few minutes you will train a new summarization model and deploy as a new API endpoint
+6. Go to the 'Serving' tab in the project and look for your endpoint
+7. You can use the "Try it Live" section with any image that contains fire to check your model
+8. You can also integrate your API with your code using the integration panel at the bottom of the page
 
+Congrats! You have trained and deployed a custom model that can summarize english text to short sentences!
 
-### Model Used
-is a fine-tuned version of [bart_large_cnn](https://huggingface.co/facebook/bart-large-cnn) from [AutoModelSeq2Seq](https://huggingface.co/transformers/model_doc/encoderdecoder.html) class of [transformers](https://huggingface.co/transformers/) library. The function used is model.generate() and the summary length is restricted to 500 words as well and is always higher than 7% of the article length.
-BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. BART is pre-trained by (1) corrupting text with an arbitrary noising function, and (2) learning a model to reconstruct the original text.
-BART is particularly effective when fine-tuned for text generation (e.g. summarization, translation) but also works well for comprehension tasks (e.g. text classification, question answering). This particular checkpoint has been fine-tuned on CNN Daily Mail, a large collection of text-summary pairs.
-### Trainer
-The Trainer class provides an API for feature-complete training in PyTorch for most standard use cases. It’s used in most of the example scripts.
-Before instantiating your Trainer, create a TrainingArguments to access all the points of customization during training.
-The API supports distributed training on multiple GPUs/TPUs, mixed precision through NVIDIA Apex and Native AMP for PyTorch.
-The Trainer contains the basic training loop which supports the above features. To inject custom behavior you can subclass them and override the following methods:
+[See here how we created this blueprint](https://github.com/cnvrg/Blueprints/tree/main/Summarization)
