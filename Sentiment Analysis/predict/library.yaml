@@ -1,0 +1,40 @@
+---
+title: Sentiment Analysis Inference # required for on creation, a slug will be generated from the title? -> inference-library
+version: 1.0.0 # required
+description: "Sentiment Analysis " # optional
+icon: python # optional
+
+# At least one tag [inference, training, data] must be present
+tags:
+  - inference
+
+# Available only for inference (deploy tasks) libraries only
+kind: webservice # required
+
+# These will replace the "compute" argument, values must be >= 0:
+# We need to add requirement for distributed pods
+requirements:
+  cpu: 3.5
+  memory: 8
+  gpu: 0
+  hpu: 0
+
+# This will replace the "docker_images" argument (?) need to work in cnvrg as well
+image: python:3.8.6
+
+# This will replace "env_setup", currently only python 3 is supported.
+language: python3
+
+arguments:
+  accept_files: false # whether the endpoint accepts files as inputs
+  file_name: predict.py # the entrypoint file name
+  function_name: predict # the entrypoint function
+  prep_file: '' # preprocess file name
+  prep_function: '' # preprocess function
+  input_example:
+    text: "this is awesome"
+  input_schema:
+    text: text
+  output_schema:
+    label: text
+    score: number
