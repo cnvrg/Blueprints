@@ -4,16 +4,20 @@ import tarfile
 import requests
 
 # CHANGE THESE VARIABLES TO AUTO GENERATE BLUEPRINT
-base_url = "https://metacloud.staging-cloud.cnvrg.io/marketplace/api/v1"
-api_token = "dFBXSzlRd1pVenFFZlFTTWZkSEhTQT09OlF2OFc3Ri9wSFZJYlU3OHQ3VmhTd0E9PQ=="
-default_version = "1.0.24"
-# library_files = ['Text Detection Endpoint']
-# blueprint_file = "Text Detection Endpoint.yaml"
-library_files = ['s3_connector',
-                 'Text Detection Endpoint',
-                 'Text Detection Retrain',
-                 'Text Detection Recreate']
-blueprint_file = "Text Detection Training Flow.yaml"
+base_url = "https://metacloud.cloud.cnvrg.io/marketplace/api/v1"
+# base_url = "https://metacloud.staging-cloud.cnvrg.io/marketplace/api/v1" # TODO CHECK TWICE
+api_token = "M3BvZHFjdUhvSmJsa0ZEeUdyNDZSQT09OklqaVZXaGNkRnJBV2pUVjZyYWI0anc9PQ=="
+default_version = "1.1.1"
+library_files = ['text_detection_inference']
+blueprint_file = "inference_blueprint.yaml"
+readme_file = 'README_inference.md'
+
+# library_files = ['s3_connector',
+#                  'Text Detection Endpoint',
+#                  'Text Detection Retrain',
+#                  'Text Detection Recreate']
+# blueprint_file = "Text Detection Training Flow.yaml"
+# readme_file = 'README_training.md'
 # library_files = ['Object Detection Endpoint']
 # blueprint_file = "Object Detection Endpoint.yaml"
 
@@ -123,7 +127,7 @@ def create_blueprint_version(blueprint_name):
 
         schema = yaml.dump(schema_dict)
 
-    with open(f"README.md", 'r') as f:
+    with open(readme_file, 'r') as f:
         readme = f.read()
 
     # create version

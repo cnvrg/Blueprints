@@ -1,0 +1,48 @@
+---
+title: Text Detection Inference
+version: 1.0.0 
+description: "Detecting and writing text value from images"
+long_description: "Detecting the text value in several languages from an image and writing it as a json response"
+
+author: "cnvrg"
+author_email: "libhub@cnvrg.io"
+
+tags:
+  - inference
+
+tasks:
+  - title: OCR Inference
+    top: 400
+    left: 300
+ 
+    type: deploy
+
+    library: ocr-inference
+    library_version: 1.0.0
+
+    command: python3 predict.py
+
+    requirements:
+      cpu: 1
+      memory: 4
+      gpu: 0
+      hpu: 0
+
+    image: python:3.8.6
+    language: python3
+
+    accept_files: false
+    gunicorn_config:
+      - key: workers
+        value: '1'
+    file_name: predict.py 
+    function_name: predict
+    prep_file: ''
+    prep_function: ''
+    input_example:
+      img: img
+    input_schema:
+      img: file
+    output_schema: {}
+      
+relations: []
