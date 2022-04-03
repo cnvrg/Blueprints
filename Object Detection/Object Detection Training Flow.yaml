@@ -43,7 +43,7 @@ tasks:
       - key: endpoint
         type: 'categorical'
         values:
-          - 'https://s3.amazonaws.com download'
+          - 'http://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
         values:
@@ -79,10 +79,12 @@ tasks:
     params:
       - key: images
         type: 'categorical'
-        values: '/input/s3_connector/object_detection_data/images'
+        values:
+          - '/input/s3_connector/object_detection_data/images'
       - key: labels
         type: 'categorical'
-        values: '/input/s3_connector/object_detection_data/labels'
+        values:
+          - '/input/s3_connector/object_detection_data/labels'
         
   - title: Retrain
     top: 400
@@ -112,11 +114,11 @@ tasks:
       - key: epochs
         type: 'categorical'
         values:
-        - '100'
+        - '10'
       - key: class_names
         type: 'categorical'
         values:
-        - "/data/object/names.csv"
+        - "/input/s3_connector/object_detection_data/names.csv"
 
   - title: Deploy Object Detection
     top: 400
@@ -132,14 +134,16 @@ tasks:
     command: python3 detect.py
 
     requirements:
-      cpu: 3.5
-      memory: 8
+      cpu: 1
+      memory: 4
       gpu: 0
       hpu: 0
 
     image: python:3.8.6
     language: python3
-
+    gunicorn_config:
+      - key: workers
+        value: '1'
     accept_files: true
 
     file_name: detect.py 

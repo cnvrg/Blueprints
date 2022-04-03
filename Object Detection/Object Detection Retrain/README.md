@@ -52,7 +52,7 @@ cnvrg run  --datasets=<'[{id:Dataset Name,commit:Commit Id}]'> --machine=<Comput
 ```
 Example:
 ```
-cnvrg run  --datasets='[{id:"object",commit:"4cd66dfabbd964f8c6c4414b07cdb45dae692e19"}]' --machine="default.gpu-small" --image=tensorflow/tensorflow:latest-gpu --sync_before=false python3 train.py --batch 2 --epochs 100 --class_name /data/object/names.csv
+cnvrg run  --datasets='[{id:"object",commit:"4cd66dfabbd964f8c6c4414b07cdb45dae692e19"}]' --machine="default.gpu-small" --image=tensorflow/tensorflow:latest-gpu --sync_before=false python3 train.py --batch 2 --epochs 100 --class_name /input/s3_connector/object_detection_data/names.csv
 ```
 
 

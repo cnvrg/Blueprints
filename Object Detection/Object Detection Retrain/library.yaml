@@ -5,7 +5,7 @@ description: "retrain yolo on custom objects"
 icon: python
 
 author: "cnvrg"
-author_email: "info@cnvrg.io"
+author_email: "libhub@cnvrg.io"
 
 tags:
   - training
@@ -30,10 +30,10 @@ arguments:
   - key: epochs
     type: 'categorical'
     values:
-      - '100'
+      - '10'
   - key: class_names
     type: 'categorical'
     values:
-      - "/data/object/names.csv"
+      - "/input/s3_connector/object_detection_data/names.csv"
     
     

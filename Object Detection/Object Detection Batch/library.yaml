@@ -5,7 +5,7 @@ description: Detect - Library file to load the pretrained weights of yolo and ru
 icon: python
 
 author: "cnvrg"
-author_email: "info@cnvrg.io"
+author_email: "libhub@cnvrg.io"
 
 tags:
   - training

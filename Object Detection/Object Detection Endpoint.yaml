@@ -25,14 +25,16 @@ tasks:
     command: python3 detect.py
 
     requirements:
-      cpu: 3.5
-      memory: 8
+      cpu: 1
+      memory: 4
       gpu: 0
       hpu: 0
 
     image: python:3.8.6
     language: python3
-
+    gunicorn_config:
+      - key: workers
+        value: '1'
     accept_files: false
 
     file_name: predict.py
