@@ -1,0 +1,36 @@
+{"CHANGE_CREDIT_CARD_NUM": 
+["Enter your new credit card number","We're sorry,what is your new number?"],
+"HOURS":["We work from 9AM to 5PM","Our hours are 9AM to 5PM"],
+"FORGOT_EMAIL":["Please enter your user ID","Please enter your phone number"],
+"FORGOT_PASSWORD":["Please enter your email","Type in the oldest password you remember"],
+"FORGOT_USERID":["Please enter your email","Type in the oldest password you remember","Enter your password"],
+"LOGIN_ERROR":["Please refresh the page"],
+"PAYMENT":["Please turn to the payment department","The payment department would be happy to help you"],
+"PYMT_CONFIRM":["Your payment is confirmed","We did not receive your payment","We received your payment,thank you!"],
+"PYMT_ERROR":["Please try again","Please try again soon"],
+"PYMT_METHOD_CHANGE":["Please enter your prefered method","What is your prefered payment method"],
+"SET_UP_ACCT":["What is your name?","Enter your email"],
+"UPDATE_CONTACT_INFO":["Enter your new email address","Enter your new details"],
+"UPDATE_EMAIL":["What is your new email address"],
+"UPDATE_PHONE_NUM":["What is your new phone number"],
+"THANK_YOU":["Thank you","Thanks"],
+"GREETINGS":["Hi","Hello","How are you?"],
+"LOCATION":["We are located at Derech Hebron 24, Jerusalem"],
+"CONTACT":["You can reach us at kayla.nayman@cnvrg.io","You can reach us at naama.holzer@cnvrg.io"]}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

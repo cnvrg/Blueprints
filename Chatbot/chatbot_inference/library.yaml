@@ -1,0 +1,34 @@
+---
+title: Chatbot Inference 
+version: 1.0.0 
+icon: python 
+
+tags:
+  - inference
+
+kind: webserivce
+
+requirements:
+  cpu: 3.5
+  memory: 7.5
+  gpu: 0
+  hpu: 0
+
+image: python:3.6.9
+
+language: python3
+
+arguments: 
+  accept_files: false 
+  file_name: predict.py
+  function_name: predict
+  prep_file: '' 
+  prep_function: ''
+  input_example:
+    input_text: "Hello" 
+  input_schema:
+    input_text: text
+  output_schema:
+    score: number
+    intent: text
+    response: text
