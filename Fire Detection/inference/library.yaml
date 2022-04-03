@@ -15,8 +15,8 @@ kind: webserivce # required
 # These will replace the "compute" argument, values must be >= 0:
 # We need to add requirement for distributed pods
 requirements:
-  cpu: 3.5
-  memory: 8
+  cpu: 1
+  memory: 4
   gpu: 0
   hpu: 0
 
@@ -27,6 +27,9 @@ image: tensorflow/tensorflow:2.8.0
 language: python3
 
 arguments:
+  gunicorn_config:
+    - key: workers
+      value: '1'
   accept_files: false # whether the endpoint accepts files as inputs
   file_name: predict.py # the entrypoint file name
   function_name: predict # the entrypoint function
@@ -37,4 +40,5 @@ arguments:
   input_schema:
     img: file
   output_schema:
-    prediction: text
+    label: text
+    score: number

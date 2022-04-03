@@ -29,15 +29,17 @@ tasks:
     kind: webservice
 
     requirements:
-      cpu: 3.5
-      memory: 8
+      cpu: 1
+      memory: 4
       gpu: 0
       hpu: 0
 
     image: tensorflow/tensorflow:2.8.0
     language: python3
     accept_files: false
-
+    gunicorn_config:
+      - key: workers
+        value: '1'
     file_name: predict.py # the entrypoint file name
     function_name: predict # the entrypoint function
     prep_file: '' # preprocess file name
@@ -47,8 +49,7 @@ tasks:
     input_schema:
       img: file
     output_schema:
-      label: number
-      name: text
+      label: text
       score: number
 
 

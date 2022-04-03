@@ -7,7 +7,7 @@ icon: python # optional
 
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "info@cnvrg.io"
+author_email: "libhub@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:
@@ -36,11 +36,11 @@ arguments:
   - key: train_folder
     type: 'categorical'
     values:
-    - '/data/fire-smoke-dataset/Train'
+    - '/input/s3_connector/fire_detection_data/Train'
   - key: test_folder
     type: 'categorical'
     values:
-      - '/data/fire-smoke-dataset/Test'
+      - '/input/s3_connector/fire_detection_data/Test'
   - key: epochs
     type: 'discrete'
     values:

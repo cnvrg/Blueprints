@@ -16,6 +16,8 @@ In order to train this model with your data, you would need to provide two folde
     *  Under the `test_folder` parameter provide the path to the test images including the prefix you provided in the `S3 Connector`, it should look like:
        `/input/s3_connector/<prefix>/Test`
 
+**NOTE**: This blueprint requires tensorflow/tensorflow:latest-gpu image to be imported in the `CONTAINERS` section
+
 **NOTE**: You can use prebuilt data examples paths that are already provided
 
 4. Click on the 'Run Flow' button
