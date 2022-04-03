@@ -1,7 +1,7 @@
 ---
 title: Recommenders Train # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: Train a custome model that can recommand users similar items according to their behaviour
+description: Train a custom model that can recommend users similar items according to their behaviour
 long_description: This blueprint allows you to train and deploy a custome model that analyze users behaviour and recommand similar items accordingly
 
 author: "cnvrg"
@@ -29,7 +29,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -42,7 +42,7 @@ tasks:
       - key: endpoint
         type: 'categorical'
         values:
-          - 'https://s3.amazonaws.com download'
+          - 'http://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
         values:
@@ -54,7 +54,7 @@ tasks:
       - key: prefix
         type: 'categorical'
         values:
-          - 'recommenders_data/'
+          - 'recommenders_workshop_march2022/default/'
   - title: Data Validation
     top: 400
     left: 100
@@ -71,7 +71,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -84,7 +84,7 @@ tasks:
       - key: filename
         type: 'categorical'
         values:
-        - '/input/s3_connector/user_items_data.csv'
+        - '/input/s3_connector/recommenders_workshop_march2022/default/user_items_explicit.csv'
   - title: Train Test Split
     top: 400
     left: 300
@@ -101,7 +101,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -131,7 +131,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -193,7 +193,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -255,7 +255,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -317,7 +317,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -371,66 +371,66 @@ tasks:
         type: 'discrete'
         values:
           - '10'
-  - title: NMF
-    top: 500
-    left: 500
-
-    # Type must be according to the flow task conventions (data, exec, deploy)
-    type: exec
-
-    # The library data
-    library: recommenders-nmf
-    library_version: 1.0.0
-
-    # The flattened library parameters (in this case we have training library)
-    command: python3 NMF.py
-
-    requirements:
-      cpu: 3.5
-      memory: 8
-      gpu: 0
-      hpu: 0
-
-    image: python:3.8.6
-    language: python3
-
-    # The "arguments" property changes to "params", rest remains the same.
-    # Params in the blueprint yaml can be used to override the arguments in the library.
-    params:
-      - key: train_file
-        type: 'categorical'
-        values:
-          - '/input/train_test_split/train_whole.csv'
-      - key: test_file
-        type: 'categorical'
-        values:
-          - '/input/train_test_split/test_whole.csv'
-      - key: num_of_steps_1
-        type: 'discrete'
-        values:
-          - '50'
-      - key: embed_dim_1
-        type: 'discrete'
-        values:
-          - '15'
-      - key: reg_pu
-        type: 'discrete'
-        values:
-          - '0.06'
-      - key: reg_pi
-        type: 'discrete'
-        values:
-          - '0.06'
-      - key: threshold
-        type: 'discrete'
-        values:
-          - '0.8'
-      - key: precision_at_value
-        type: 'discrete'
-        values:
-          - '10'
+#  - title: NMF
+#    top: 500
+#    left: 500
+#
+#    # Type must be according to the flow task conventions (data, exec, deploy)
+#    type: exec
+#
+#    # The library data
+#    library: recommenders-nmf
+#    library_version: 1.0.0
+#
+#    # The flattened library parameters (in this case we have training library)
+#    command: python3 NMF.py
+#
+#    requirements:
+#      cpu: 3.5
+#      memory: 7
+#      gpu: 0
+#      hpu: 0
+#
+#    image: python:3.8.6
+#    language: python3
+#
+#    # The "arguments" property changes to "params", rest remains the same.
+#    # Params in the blueprint yaml can be used to override the arguments in the library.
+#    params:
+#      - key: train_file
+#        type: 'categorical'
+#        values:
+#          - '/input/train_test_split/train_whole.csv'
+#      - key: test_file
+#        type: 'categorical'
+#        values:
+#          - '/input/train_test_split/test_whole.csv'
+#      - key: num_of_steps_1
+#        type: 'discrete'
+#        values:
+#          - '50'
+#      - key: embed_dim_1
+#        type: 'discrete'
+#        values:
+#          - '15'
+#      - key: reg_pu
+#        type: 'discrete'
+#        values:
+#          - '0.06'
+#      - key: reg_pi
+#        type: 'discrete'
+#        values:
+#          - '0.06'
+#      - key: threshold
+#        type: 'discrete'
+#        values:
+#          - '0.8'
+#      - key: precision_at_value
+#        type: 'discrete'
+#        values:
+#          - '10'
   - title: ALS
-    top: 600
+    top: 500
     left: 500
 
     # Type must be according to the flow task conventions (data, exec, deploy)
@@ -445,7 +445,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -499,7 +499,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -532,7 +532,7 @@ tasks:
 
     requirements:
       cpu: 3.5
-      memory: 8
+      memory: 7
       gpu: 0
       hpu: 0
 
@@ -544,10 +544,12 @@ tasks:
     function_name: predict # the entrypoint function
     prep_file: '' # preprocess file name
     prep_function: '' # preprocess function
+    input_example:
+      user_id: 2
     input_schema:
       user_id: number
     output_schema:
-      recommendations: list
+      recommendations: number[]
 
 
 relations:
@@ -563,8 +565,8 @@ relations:
     to: Matrix Factorization
   - from: Train Test Split
     to: Regularized Matrix
-  - from: Train Test Split
-    to: NMF
+#  - from: Train Test Split
+#    to: NMF
   - from: Train Test Split
     to: ALS
   - from: SVD
@@ -575,8 +577,8 @@ relations:
     to: Compare
   - from: Regularized Matrix
     to: Compare
-  - from: NMF
-    to: Compare
+#  - from: NMF
+#    to: Compare
   - from: ALS
     to: Compare
   - from: Compare

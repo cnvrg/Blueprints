@@ -36,4 +36,4 @@ arguments:
   input_schema:
     user_id: number
   output_schema:
-    users: list
+    recommendations: number[]

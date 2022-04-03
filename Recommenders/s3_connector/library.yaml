@@ -6,7 +6,7 @@ icon: python # optional
 
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "info@cnvrg.io"
+author_email: "libhub@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:
@@ -15,7 +15,7 @@ tags:
   - connector
 
 # Available only for training (exec tasks) libraries only
-command: python s3_client.py --endpoint https://s3.amazonaws.com download
+command: python s3-connector.py
 
 # These will replace the "compute" argument, values must be >= 0:
 # We need to add requirement for distributed pods
@@ -26,7 +26,7 @@ requirements:
   hpu: 0
 
 # This will replace the "docker_images" argument (?) need to work in cnvrg as well
-image: python:3.8
+image: cnvrg:v5.0
 
 # This will replace "env_setup", currently only python 3 is supported.
 language: python3
@@ -34,7 +34,16 @@ language: python3
 arguments:
   # Training arguments will have type and value, valid types are [discrete, float, integer, categorical]
   # Empty value will mark the argument as 'required', adding a default value will place it in the flow.
-  - key: url
+  - key: endpoint
     type: 'categorical'
     values:
-      - 'https://libhub-readme.s3.us-west-2.amazonaws.com/user_items_data.csv'
+      - 'http://s3.amazonaws.com download'
+  - key: bucketname
+    type: 'categorical'
+    values: []
+  - key: localdir
+    type: 'categorical'
+    values: []
+  - key: prefix
+    type: 'categorical'
+    values: []

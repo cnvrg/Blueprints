@@ -51,15 +51,10 @@ def predict(data):
     for i in range(len(finaloutput['user_id'].unique())):
         cur_user = finaloutput['user_id'].unique()[i]
         test = finaloutput.loc[finaloutput['user_id']
-                               == str(cur_user)].sample(n=5, replace=True)
+                               == str(cur_user)].sample(n=10, replace=True)
         finaloutput_2 = pd.concat([finaloutput_2, test])
-    finaloutput_1 = ''
     top_cnt = 0
-    top_count = 5
-    for i in range(len(finaloutput_2['user_id'].unique())):
-        finaloutput_1 = finaloutput_1 + f'"{str(finaloutput_2["user_id"].unique()[i])}"' + ':'+'['+','.join(
-            finaloutput_2['item_id'][top_cnt:(top_count+top_cnt)].astype(str).to_list()) + '],'
-        top_cnt = top_cnt+top_count
+    top_count = 10
 
-    finaloutput_1 = finaloutput_1[0:len(finaloutput_1)-1]
-    return finaloutput_1
+    response = finaloutput_2['item_id'][top_cnt:(top_count + top_cnt)].astype(str).to_list()
+    return {'recommendations': response}

@@ -1,7 +1,7 @@
 ---
 title: Recommender Engine Inference # Required on creation, replaces the "flow" parameter
 version: 1.0.0 # Required
-description: Analyze users behaviour and recommand similar items accordingly
+description: Analyze users behaviour and recommend similar items accordingly
 long_description: This blueprint allows you to deploy a ready to use endpoint that can analyze users behaviour and recommand similar items
 
 # Optional properties for crediting authors
@@ -22,7 +22,7 @@ tasks:
     type: deploy
 
     # The library data
-    library: example-recommender-inference
+    library: recommender-inference
     library_version: 1.0.0
 
     # The flattened library parameters (in this case we have inference library)
@@ -47,7 +47,7 @@ tasks:
     input_schema:
       user_id: number
     output_schema:
-      recommendations: list
+      recommendations: number[]
 
 
 relations: []

@@ -7,10 +7,10 @@ from cnvrg import Experiment
 tic=time.time()
 parser = argparse.ArgumentParser(description="""Preprocessor""")
 parser.add_argument('-f','--filename', action='store', dest='filename', default='/data/movies_rec_sys/ratings_2.csv', required=True, help="""string. csv topics data file""")
-parser.add_argument('--project_dir', action='store', dest='project_dir',
-                        help="""--- For inner use of cnvrg.io ---""")
-parser.add_argument('--output_dir', action='store', dest='output_dir',
-                        help="""--- For inner use of cnvrg.io ---""")
+# parser.add_argument('--project_dir', action='store', dest='project_dir',
+#                         help="""--- For inner use of cnvrg.io ---""")
+# parser.add_argument('--output_dir', action='store', dest='output_dir',
+#                         help="""--- For inner use of cnvrg.io ---""")
 args = parser.parse_args()
 FILENAME = args.filename
 df = pd.read_csv(FILENAME)
@@ -19,9 +19,29 @@ df = pd.read_csv(FILENAME)
 #    df['rating'].replace(to_replace=0,value=1,inplace=True)
 #    print("Changed")
 ############## check column headings #############
-headers=['user_id','item_id','rating']
-if(all(df.columns==headers)==False):
-        raise("Column headings not correct!")
+headers=['user_id','item_id']
+if not all([i in df.columns for i in headers]):
+    raise Exception('Data must contain |user_id|item_id| columns!')
+
+if 'rating' in df.columns:  # EXPLICIT
+    print('Data is in Explicit format!')
+    print(df.head())
+else:  # IMPLICIT
+    print('Data is in Implicit format!')
+    print(df.head())
+    df['rating'] = 1
+    unique_users = df['user_id'].unique()
+    unique_items = df['item_id'].unique()
+    for user in unique_users:
+        for item in unique_items:
+            if not ((df['user_id'] == user) & (df['item_id'] == item)).any():  # add negative rows
+                df2 = pd.DataFrame({'user_id': [user], 'item_id': [item], 'rating': [0]})
+                df = pd.concat([df, df2], ignore_index=True)
+
+
+# if(all(df.columns==headers)==False):
+#
+#         # raise("Column headings not correct!")
 #################### CHECK NAN #############
 df=df.dropna()
 #################### CHECK ratings are either integers or floats #############
