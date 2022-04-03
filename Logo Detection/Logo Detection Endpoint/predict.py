@@ -36,6 +36,7 @@ import base64
 import numpy as np
 import os
 import shutil
+import magic
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
@@ -393,14 +394,15 @@ def predict(sourc):
     os.mkdir(image_dir)
     try:
         for image in sourc["img"]:
-            decoded = base64.b64decode(image["base_64_content"])
+            decoded = base64.b64decode(image)
+            file_ext = magic.from_buffer(decoded, mime=True).split('/')[-1]
             nparr = np.fromstring(decoded, np.uint8)
             img = cv2.imdecode(nparr, cv2.IMREAD_UNCHANGED)
-            savepath = os.path.join(image_dir, image["name"])
+            savepath = os.path.join(image_dir, f'img.{file_ext}')
             cv2.imwrite(savepath, img)
-        if os.path.exists("/input/logo_detection_retrain/weights/best.pt"):
+        if os.path.exists("/input/retrain/weights/best.pt"):
             results = run(
-                weights="/input/logo_detection_retrain/weights/best.pt",
+                weights="/input/retrain/weights/best.pt",
                 source="images",
                 nosave=True,
             )
@@ -411,8 +413,9 @@ def predict(sourc):
             shutil.rmtree("images")
             return results
     except Exception as e:
-         traceback.print_exc()
-         shutil.rmtree("images")
+        traceback.print_exc()
+        shutil.rmtree("images")
+        return {}
 
 
 def main(opt):

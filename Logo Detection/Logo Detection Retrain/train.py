@@ -620,12 +620,12 @@ def parse_opt(known=False):
 
     number = str(len(classes.split(',')))
 
-    train_path = "train: "+"../../input/logo_detection_recreate/images/train/ "
-    val_path = "val: "+"../../input/logo_detection_recreate/images/val/ "
-    test_path = "test: "+"../../input/logo_detection_recreate/images/test/ "
+    train_path = "train: "+"../../input/recreate/images/train/ "
+    val_path = "val: "+"../../input/recreate/images/val/ "
+    test_path = "test: "+"../../input/recreate/images/test/ "
     number_of_classes = "nc: "+number
     class_names = "names: " + classes
-    file = open('data/custom_train.yaml', 'w')
+    file = open(os.path.join(ROOT, 'data/custom_train.yaml'), 'w+')
     file.write(train_path)
     file.write("\n")
     file.write(val_path)

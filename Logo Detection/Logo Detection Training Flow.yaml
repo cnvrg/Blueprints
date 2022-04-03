@@ -43,7 +43,7 @@ tasks:
       - key: endpoint
         type: 'categorical'
         values:
-          - 'https://s3.amazonaws.com download'
+          - 'http://s3.amazonaws.com download'
       - key: bucketname
         type: 'categorical'
         values:
@@ -79,10 +79,12 @@ tasks:
     params:
       - key: images
         type: 'categorical'
-        values: '/input/s3_connector/logo_detection_data/images'
+        values:
+          - '/input/s3_connector/logo_detection_data/images'
       - key: labels
         type: 'categorical'
-        values: '/input/s3_connector/logo_detection_data/labels'
+        values:
+          - '/input/s3_connector/logo_detection_data/labels'
         
   - title: Retrain
     top: 400
@@ -115,7 +117,8 @@ tasks:
         - '100'
       - key: class_names
         type: 'categorical'
-        values: []
+        values:
+        - '/input/s3_connector/logo_detection_data/names.csv'
 
   - title: Deploy Logo Detection
     top: 400
@@ -131,8 +134,8 @@ tasks:
     command: python3 predict.py
 
     requirements:
-      cpu: 3.5
-      memory: 8
+      cpu: 1
+      memory: 4
       gpu: 0
       hpu: 0
 
@@ -140,7 +143,9 @@ tasks:
     language: python3
 
     accept_files: false
-
+    gunicorn_config:
+      - key: workers
+        value: '1'
     file_name: predict.py
     function_name: predict
     prep_file: '' 

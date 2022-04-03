@@ -6,7 +6,7 @@ icon: python # optional
 
 # Optional properties for crediting authors
 author: "cnvrg"
-author_email: "info@cnvrg.io"
+author_email: "libhub@cnvrg.io"
 
 # At least one tag [inference, training, data] must be present
 tags:
@@ -37,7 +37,7 @@ arguments:
   - key: endpoint
     type: 'categorical'
     values:
-      - 'https://s3.amazonaws.com download'
+      - 'http://s3.amazonaws.com download'
   - key: bucketname
     type: 'categorical'
     values: []
