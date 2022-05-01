@@ -29,8 +29,8 @@ tasks:
     command: python3 main.py
 
     requirements:
-      cpu: 2
-      memory: 2
+      cpu: 3.5
+      memory: 7.5
       gpu: 0
       hpu: 0
 
